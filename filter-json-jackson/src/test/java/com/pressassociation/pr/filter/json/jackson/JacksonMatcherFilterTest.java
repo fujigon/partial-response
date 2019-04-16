@@ -42,6 +42,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
@@ -287,7 +289,7 @@ public class JacksonMatcherFilterTest {
     JacksonMatcherFilter filter = new JacksonMatcherFilter(Matcher.of(fields));
     mapper.setFilters(new SimpleFilterProvider()
                           .addFilter("test", filter));
-    assertEquals(json, mapper.writeValueAsString(new PetStore()));
+    assertThat(json, is(mapper.writeValueAsString(new PetStore()).replace(System.lineSeparator(), "\n")));
     assertNull("Runtime state was not cleared", filter.state.get());
   }
 
