@@ -24,6 +24,7 @@
 
 package com.pressassociation.pr.filter.json.jackson;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 
@@ -326,7 +327,7 @@ public class JacksonMatcherFilterTest {
 
     @Override
     public String toString() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
                     .add("type", type)
                     .add("version", version)
                     .add("address", address)
@@ -361,7 +362,7 @@ public class JacksonMatcherFilterTest {
 
       @Override
       public String toString() {
-        return Objects.toStringHelper(this)
+        return MoreObjects.toStringHelper(this)
                       .add("line1", line1)
                       .add("line2", line2)
                       .add("postCode", postCode)
@@ -399,7 +400,7 @@ public class JacksonMatcherFilterTest {
 
       @Override
       public String toString() {
-        return Objects.toStringHelper(this)
+        return MoreObjects.toStringHelper(this)
                       .add("type", type)
                       .add("name", name)
                       .toString();

@@ -31,7 +31,7 @@ import com.pressassociation.pr.ast.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-import static com.google.common.base.Objects.firstNonNull;
+import static com.google.common.base.MoreObjects.firstNonNull;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**

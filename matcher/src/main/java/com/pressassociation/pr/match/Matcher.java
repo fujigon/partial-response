@@ -193,4 +193,9 @@ public abstract class Matcher implements Predicate<Leaf> {
   protected AstNode getAstNode() {
     return new Parser().parse(patternString());
   }
+
+  @Override
+  public boolean test(@Nullable Leaf input) {
+    return apply(input);
+  }
 }
