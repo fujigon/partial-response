@@ -33,7 +33,7 @@ import com.pressassociation.pr.ast.*;
 
 import java.util.List;
 
-import static com.google.common.base.Objects.firstNonNull;
+import static com.google.common.base.MoreObjects.firstNonNull;
 import static com.google.common.base.Preconditions.checkState;
 
 /**

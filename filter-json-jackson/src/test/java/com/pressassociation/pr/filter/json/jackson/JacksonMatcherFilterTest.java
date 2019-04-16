@@ -24,6 +24,7 @@
 
 package com.pressassociation.pr.filter.json.jackson;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 
@@ -41,6 +42,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
@@ -286,7 +289,7 @@ public class JacksonMatcherFilterTest {
     JacksonMatcherFilter filter = new JacksonMatcherFilter(Matcher.of(fields));
     mapper.setFilters(new SimpleFilterProvider()
                           .addFilter("test", filter));
-    assertEquals(json, mapper.writeValueAsString(new PetStore()));
+    assertThat(json, is(mapper.writeValueAsString(new PetStore()).replace(System.lineSeparator(), "\n")));
     assertNull("Runtime state was not cleared", filter.state.get());
   }
 
@@ -326,7 +329,7 @@ public class JacksonMatcherFilterTest {
 
     @Override
     public String toString() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
                     .add("type", type)
                     .add("version", version)
                     .add("address", address)
@@ -361,7 +364,7 @@ public class JacksonMatcherFilterTest {
 
       @Override
       public String toString() {
-        return Objects.toStringHelper(this)
+        return MoreObjects.toStringHelper(this)
                       .add("line1", line1)
                       .add("line2", line2)
                       .add("postCode", postCode)
@@ -399,7 +402,7 @@ public class JacksonMatcherFilterTest {
 
       @Override
       public String toString() {
-        return Objects.toStringHelper(this)
+        return MoreObjects.toStringHelper(this)
                       .add("type", type)
                       .add("name", name)
                       .toString();
